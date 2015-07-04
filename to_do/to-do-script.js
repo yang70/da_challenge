@@ -1,7 +1,10 @@
 $(function() {
+  var listCounter = 0;
+
   // Function to prepend to the beginning of the list
   function addToList(text) {
-    $("ul").prepend("<li>&#8226; " + text + "</li>")
+    $("ul").prepend('<li ' + 'id="item' + listCounter + '">&#8226; ' + text + '</li>');
+    listCounter += 1;
   }
 
   // On button click append text to the list
