@@ -18,9 +18,9 @@ $(function() {
   });
 
   // Remove li on click
-  $(".del_button").on('click', function() {
+  $("#todo_list").on('click', '.del_button', function() {
     event.preventDefault();
-    console.log("worked");
+    $(this).parent().remove();
   });
 
 });
