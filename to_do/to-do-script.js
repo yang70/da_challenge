@@ -12,6 +12,12 @@ $(function() {
     event.preventDefault();
     var newText = $('[name="new_item"]').val();
     addToList(newText);
+    $("#inputForm").children("input").val('');
+  });
+
+  // Remove li on click
+  $('li').on('click', function() {
+
   });
 
 });
