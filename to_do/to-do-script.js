@@ -1,12 +1,10 @@
 $(function() {
-  // variable to give each list item a unique name
-  var listCounter = 0;
 
   // Function to prepend to the beginning of the list
   function addToList(text) {
+    liString = '<li>&#8226; ' + text + '<button class="del_button">X</button></li>'
 
-    $("ul").prepend('<li ' + 'id="item' + listCounter + '">&#8226; ' + text + '<button class="del_button">X</button></li>');
-    listCounter += 1;
+    $("ul").prepend(liString);
   }
 
   // On button click append text to the list
