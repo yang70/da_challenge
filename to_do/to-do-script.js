@@ -1,9 +1,11 @@
 $(function() {
+  // variable to give each list item a unique name
   var listCounter = 0;
 
   // Function to prepend to the beginning of the list
   function addToList(text) {
-    $("ul").prepend('<li ' + 'id="item' + listCounter + '">&#8226; ' + text + '</li>');
+
+    $("ul").prepend('<li ' + 'id="item' + listCounter + '">&#8226; ' + text + '<button class="del_button">X</button></li>');
     listCounter += 1;
   }
 
@@ -16,8 +18,9 @@ $(function() {
   });
 
   // Remove li on click
-  $('li').on('click', function() {
-
+  $(".del_button").on('click', function() {
+    event.preventDefault();
+    console.log("worked");
   });
 
 });

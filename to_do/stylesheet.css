@@ -65,3 +65,8 @@ ul {
   padding: 0px;
   list-style-type: none;
 }
+
+.del_button {
+  float: right;
+  margin-right: 5px;
+}
