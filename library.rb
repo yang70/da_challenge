@@ -11,7 +11,7 @@ class Library
 
   def list_books
     $shelf_array.each do |x|
-      puts "'#{x[0]}' written by #{x[1]} is stored on shelf ##{x[3]}."
+      puts "'#{x[0]}' written by #{x[1]} is stored on shelf ##{x[3]} in slot #{x[4]}."
       if x[2]
         puts "This book is checked in."
       else
@@ -57,7 +57,7 @@ class Shelf
       if value != "empty"
         next
       elsif value == "empty"
-        @shelf_hash[key] = [book.title, book.author, check_in, @shelf_number]
+        @shelf_hash[key] = [book.title, book.author, check_in, @shelf_number, key]
         $shelf_array << @shelf_hash[key]
         break
       else
@@ -72,21 +72,13 @@ downtown_library = Library.new
 book1 = Book.new("The Bible", "Jesus")
 book2 = Book.new("Moby Dick", "Herman Melville")
 book3 = Book.new("War and Peace", "Leo Tolstoy")
+book4 = Book.new("Learn to Program", "Chris Pine")
 
 shelf1 = Shelf.new
 shelf2 = Shelf.new
 
-shelf1.add_to_shelf(book1, false)
+shelf1.add_to_shelf(book1)
 shelf1.add_to_shelf(book2)
 shelf2.add_to_shelf(book3)
 
-
 downtown_library.list_books
-
-
-
-
-
-
-
-
