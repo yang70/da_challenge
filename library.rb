@@ -1,6 +1,30 @@
+# library class
+class Library
+  def initialize
+    $shelf_iterator = 0
+    $shelf_array = []
+  end
+
+  def num_shelves
+    return $shelf_iterator
+  end
+
+  def list_books
+    $shelf_array.each do |x|
+      puts "'#{x[0]}' written by #{x[1]} is stored on shelf ##{x[3]}."
+      if x[2]
+        puts "This book is checked in."
+      else
+        puts "This book is checked out."
+      end
+      puts '---'
+    end
+  end
+end
+
 # book class
 class Book
-  attr_accessor :title, :author
+  attr_reader :title, :author
 
   def initialize(title, author)
     @title = title
@@ -10,11 +34,13 @@ end
 
 # shelf class
 class Shelf
+  attr_accessor :shelf_hash
 
   def initialize
-    $shelf_number += 1
+    $shelf_iterator += 1
+    @shelf_number = $shelf_iterator
 
-    # letter is slots in the shelf, each shelf has space for 5 books
+    # letters equal slots in the shelf, each shelf has space for 5 books
     @shelf_hash = {
       a: "empty",
       b: "empty",
@@ -24,36 +50,20 @@ class Shelf
     }
   end
 
+  # search for an empty slot in the shelf, then assign the book info as array
   def add_to_shelf(book, check_in = true)
+
     @shelf_hash.each do |key, value|
       if value != "empty"
         next
       elsif value == "empty"
-        @shelf_hash[key] = [book.title, book.author, check_in]
+        @shelf_hash[key] = [book.title, book.author, check_in, @shelf_number]
+        $shelf_array << @shelf_hash[key]
         break
       else
         return "Shelf is full!"
       end
     end
-  end
-
-  def return_hash
-    @shelf_hash
-  end
-end
-
-# library class
-class Library
-  def initialize
-    $shelf_number = 0
-  end
-
-  def num_shelves
-    return $shelf_number
-  end
-
-  def list_books
-
   end
 end
 
@@ -61,13 +71,22 @@ downtown_library = Library.new
 
 book1 = Book.new("The Bible", "Jesus")
 book2 = Book.new("Moby Dick", "Herman Melville")
+book3 = Book.new("War and Peace", "Leo Tolstoy")
 
-new_shelf = Shelf.new
-new_shelf2 = Shelf.new
+shelf1 = Shelf.new
+shelf2 = Shelf.new
 
-new_shelf.add_to_shelf(book1)
-new_shelf.add_to_shelf(book2)
+shelf1.add_to_shelf(book1, false)
+shelf1.add_to_shelf(book2)
+shelf2.add_to_shelf(book3)
 
-p new_shelf.return_hash[:a]
-p new_shelf.return_hash[:b]
-p downtown_library.num_shelves
+
+downtown_library.list_books
+
+
+
+
+
+
+
+
