@@ -54,6 +54,13 @@ class Library
       end
     end
   end
+
+  def list_shelf(shelf_num)
+    puts "The following books are located on shelf ##{shelf_num}:"
+    $shelf_array.each do |s|
+      puts "'#{s[0]}' is in slot #{s[4]}." if shelf_num == s[3]
+    end
+  end
 end
 
 # book class
@@ -176,6 +183,13 @@ shelf2 = Shelf.new
 # shelf2.add_to_shelf(book2)
 # downtown_library.check_out(book7)
 
-
-
+# Add books, then list all books on a specific shelf
+shelf1.add_to_shelf(book1)
+shelf1.add_to_shelf(book2)
+shelf1.add_to_shelf(book3)
+shelf2.add_to_shelf(book4)
+shelf2.add_to_shelf(book5)
+shelf2.add_to_shelf(book6)
+downtown_library.list_shelf(1)
+downtown_library.list_shelf(2)
 
