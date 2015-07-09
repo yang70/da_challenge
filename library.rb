@@ -20,6 +20,40 @@ class Library
       puts '---'
     end
   end
+
+  def check_out(book)
+    title_counter = 0
+
+    $shelf_array.each do |i|
+      if book.title == i[0] && i[2] == true
+        i[2] = false
+        puts "You checked out '#{book.title}'."
+        break
+      elsif book.title == i[0] && i[2] == false
+        puts "#{book.title} is already checked out."
+        break
+      else
+        title_counter +=1
+      end
+    end
+    book_error = "That book is not part of the library"
+    puts book_error if title_counter == $shelf_array.length
+  end
+
+  def check_in(book)
+    $shelf_array.each do |i|
+      if book.title == i[0] && i[2] == false
+        i[2] = true
+        puts "You checked in '#{book.title}'"
+        break
+      elsif book.title == i[0] && i[2] == true
+        puts "'#{book.title}' is already checked in."
+        break
+      else
+        next
+      end
+    end
+  end
 end
 
 # book class
@@ -51,17 +85,19 @@ class Shelf
   end
 
   # search for an empty slot in the shelf, then assign the book info as array
-  def add_to_shelf(book, check_in = true)
+  def add_to_shelf(book, check_status = true)
 
     @shelf_hash.each do |key, value|
-      if value != "empty"
+      if value != "empty" && key == :e
+        puts "Error, this shelf is full! '#{book.title}' NOT added to shelf ##{@shelf_number}."
+        break
+      elsif value != "empty"
         next
       elsif value == "empty"
-        @shelf_hash[key] = [book.title, book.author, check_in, @shelf_number, key]
+        @shelf_hash[key] = [book.title, book.author, check_status, @shelf_number, key]
         $shelf_array << @shelf_hash[key]
+        puts "'#{book.title}' was added to shelf ##{@shelf_number} in slot #{key}."
         break
-      else
-        return "Shelf is full!"
       end
     end
   end
@@ -73,12 +109,18 @@ book1 = Book.new("The Bible", "Jesus")
 book2 = Book.new("Moby Dick", "Herman Melville")
 book3 = Book.new("War and Peace", "Leo Tolstoy")
 book4 = Book.new("Learn to Program", "Chris Pine")
+book5 = Book.new("Of Mice and Men", "John Steinbeck")
+book6 = Book.new("1984", "George Orwell")
 
 shelf1 = Shelf.new
 shelf2 = Shelf.new
 
 shelf1.add_to_shelf(book1)
 shelf1.add_to_shelf(book2)
-shelf2.add_to_shelf(book3)
+shelf1.add_to_shelf(book3)
+shelf1.add_to_shelf(book4)
+shelf1.add_to_shelf(book5)
+shelf1.add_to_shelf(book6)
 
-downtown_library.list_books
+# downtown_library.list_books
+
