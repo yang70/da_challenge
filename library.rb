@@ -1,8 +1,8 @@
 # library class
 class Library
   def initialize
-    $shelf_iterator = 0
-    $shelf_array = []
+    $shelf_iterator = 0 # to keep track of number of shelves
+    $shelf_array = [] # to store shelf info for access by the library
   end
 
   def num_shelves
@@ -22,7 +22,7 @@ class Library
   end
 
   def check_out(book)
-    title_counter = 0
+    title_counter = 0 # allows return of error if book does not exist
 
     $shelf_array.each do |i|
       if book.title == i[0] && i[2] == true
@@ -36,7 +36,7 @@ class Library
         title_counter += 1
       end
     end
-    book_error = 'That book is not part of the library'
+    book_error = "'#{book.title}' has not been added to the library."
     puts book_error if title_counter == $shelf_array.length
   end
 
@@ -170,7 +170,11 @@ shelf2 = Shelf.new
 # downtown_library.list_books
 # downtown_library.check_in(book1)
 
-
+# # Try to check out a book that hasn't been added to a shelf
+# book7 = Book.new("The Catcher in the Rye", "J.D. Salinger")
+# shelf1.add_to_shelf(book1)
+# shelf2.add_to_shelf(book2)
+# downtown_library.check_out(book7)
 
 
 
