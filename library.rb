@@ -21,6 +21,18 @@ class Library
     end
   end
 
+  def list_books_alpha
+    $shelf_array.sort.each do |x|
+      puts '---'
+      puts "'#{x[0]}' written by #{x[1]} is stored on shelf ##{x[3]} in slot #{x[4]}."
+      if x[2]
+        puts 'This book is checked in.'
+      else
+        puts 'This book is checked out.'
+      end
+    end
+  end
+
   def check_out(book)
     title_counter = 0 # allows return of error if book does not exist
 
@@ -183,13 +195,21 @@ shelf2 = Shelf.new
 # shelf2.add_to_shelf(book2)
 # downtown_library.check_out(book7)
 
-# Add books, then list all books on a specific shelf
-shelf1.add_to_shelf(book1)
-shelf1.add_to_shelf(book2)
-shelf1.add_to_shelf(book3)
-shelf2.add_to_shelf(book4)
-shelf2.add_to_shelf(book5)
-shelf2.add_to_shelf(book6)
-downtown_library.list_shelf(1)
-downtown_library.list_shelf(2)
+# # Add books, then list all books on a specific shelf
+# shelf1.add_to_shelf(book1)
+# shelf1.add_to_shelf(book2)
+# shelf1.add_to_shelf(book3)
+# shelf2.add_to_shelf(book4)
+# shelf2.add_to_shelf(book5)
+# shelf2.add_to_shelf(book6)
+# downtown_library.list_shelf(1)
+# downtown_library.list_shelf(2)
 
+# # Add boks, then list them in alphabetical order
+# shelf1.add_to_shelf(book1)
+# shelf1.add_to_shelf(book2)
+# shelf1.add_to_shelf(book3)
+# shelf2.add_to_shelf(book4)
+# shelf2.add_to_shelf(book5)
+# shelf2.add_to_shelf(book6)
+# downtown_library.list_books_alpha
