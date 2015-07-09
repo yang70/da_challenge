@@ -12,7 +12,7 @@ class Library
   def list_books
     $shelf_array.each do |x|
       puts '---'
-      puts "'#{x[0]}' written by #{x[1]} is stored on shelf ##{x[3]} in slot #{x[4]}."
+      puts "'#{x[0]}' written by #{x[1]} is stored on shelf ##{x[3]} in slot #{x[4]}. It's Book ID is #{x[5]}."
       if x[2]
         puts 'This book is checked in.'
       else
@@ -24,7 +24,7 @@ class Library
   def list_books_alpha
     $shelf_array.sort.each do |x|
       puts '---'
-      puts "'#{x[0]}' written by #{x[1]} is stored on shelf ##{x[3]} in slot #{x[4]}."
+      puts "'#{x[0]}' written by #{x[1]} is stored on shelf ##{x[3]} in slot #{x[4]}. It's Book ID is #{x[5]}."
       if x[2]
         puts 'This book is checked in.'
       else
@@ -67,21 +67,45 @@ class Library
     end
   end
 
-  def list_shelf(shelf_num)
+  def list_shelf(shelf_num) # Trying to come up with a way to give error
     puts "The following books are located on shelf ##{shelf_num}:"
+
     $shelf_array.each do |s|
-      puts "'#{s[0]}' is in slot #{s[4]}." if shelf_num == s[3]
+      if shelf_num == s[3]
+        print "'#{s[0]}' is in slot #{s[4]}. "
+        puts "It's Book ID is #{s[5]}"
+      end
     end
+  end
+
+  def list_commands
+    puts "--- Library: Available user commands ---".center(70)
+    print "List available user commands:".ljust(30)
+    puts "downtown_library.list_commands".rjust(40)
+    print "List all books on all shelves:".ljust(30)
+    puts "downtown_library.list_books".rjust(40)
+    print "List all books alphabetically:".ljust(30)
+    puts "downtown_library.list_books_alpha".rjust(40)
+    print "List total number of shelves:".ljust(30)
+    puts "downtown_library.num_shelves".rjust(40)
+    print "List specific shelf:".ljust(30)
+    puts "downtown_library.list([shelf number])".rjust(40)
+    print "Check out a book:".ljust(30)
+    puts "downtown_library.check_out([book ID])".rjust(40)
+    print "Check in a book:".ljust(30)
+    puts "downtown_library.check_in([book ID])".rjust(40)
+    puts "--- End ---".center(70)
   end
 end
 
 # book class
 class Book
-  attr_reader :title, :author
+  attr_reader :title, :author, :bookId
 
-  def initialize(title, author)
+  def initialize(title, author, bookId)
     @title = title
     @author = author
+    @bookId = bookId
   end
 end
 
@@ -112,7 +136,7 @@ class Shelf
       elsif value != 'empty'
         next
       elsif value == 'empty'
-        @shelf_hash[key] = [book.title, book.author, check_status, @shelf_number, key]
+        @shelf_hash[key] = [book.title, book.author, check_status, @shelf_number, key, book.bookId]
         $shelf_array << @shelf_hash[key]
         puts "'#{book.title}' was added to shelf ##{@shelf_number} in slot #{key}."
         break
@@ -123,15 +147,17 @@ end
 
 downtown_library = Library.new
 
-book1 = Book.new('The Bible', 'Jesus')
-book2 = Book.new('Moby Dick', 'Herman Melville')
-book3 = Book.new('War and Peace', 'Leo Tolstoy')
-book4 = Book.new('Learn to Program', 'Chris Pine')
-book5 = Book.new('Of Mice and Men', 'John Steinbeck')
-book6 = Book.new('1984', 'George Orwell')
+book1 = Book.new('The Bible', 'Jesus', 'book1')
+book2 = Book.new('Moby Dick', 'Herman Melville', 'book2')
+book3 = Book.new('War and Peace', 'Leo Tolstoy', 'book3')
+book4 = Book.new('Learn to Program', 'Chris Pine', 'book4')
+book5 = Book.new('Of Mice and Men', 'John Steinbeck', 'book5')
+book6 = Book.new('1984', 'George Orwell', 'book6')
 
 shelf1 = Shelf.new
 shelf2 = Shelf.new
+
+downtown_library.list_commands
 
 ###############################################################################
 # Test section below ### Un-comment a section to test different functionality
@@ -204,6 +230,15 @@ shelf2 = Shelf.new
 # shelf2.add_to_shelf(book6)
 # downtown_library.list_shelf(1)
 # downtown_library.list_shelf(2)
+
+# Attempt to list a shelf that doesn't exist
+shelf1.add_to_shelf(book1)
+shelf1.add_to_shelf(book2)
+shelf1.add_to_shelf(book3)
+shelf2.add_to_shelf(book4)
+shelf2.add_to_shelf(book5)
+shelf2.add_to_shelf(book6)
+downtown_library.list_shelf(3)
 
 # # Add boks, then list them in alphabetical order
 # shelf1.add_to_shelf(book1)
