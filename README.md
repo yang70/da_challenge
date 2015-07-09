@@ -5,4 +5,4 @@
 <p>RoR Robot App</p>
 
 Matthew Yang
-[yang70@gmail.com](yang70@gmail.com)
+<yang70@gmail.com>
