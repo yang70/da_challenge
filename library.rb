@@ -6,18 +6,18 @@ class Library
   end
 
   def num_shelves
-    return $shelf_iterator
+    $shelf_iterator
   end
 
   def list_books
     $shelf_array.each do |x|
+      puts '---'
       puts "'#{x[0]}' written by #{x[1]} is stored on shelf ##{x[3]} in slot #{x[4]}."
       if x[2]
-        puts "This book is checked in."
+        puts 'This book is checked in.'
       else
-        puts "This book is checked out."
+        puts 'This book is checked out.'
       end
-      puts '---'
     end
   end
 
@@ -30,13 +30,13 @@ class Library
         puts "You checked out '#{book.title}'."
         break
       elsif book.title == i[0] && i[2] == false
-        puts "#{book.title} is already checked out."
+        puts "'#{book.title}' is already checked out."
         break
       else
-        title_counter +=1
+        title_counter += 1
       end
     end
-    book_error = "That book is not part of the library"
+    book_error = 'That book is not part of the library'
     puts book_error if title_counter == $shelf_array.length
   end
 
@@ -76,24 +76,23 @@ class Shelf
 
     # letters equal slots in the shelf, each shelf has space for 5 books
     @shelf_hash = {
-      a: "empty",
-      b: "empty",
-      c: "empty",
-      d: "empty",
-      e: "empty"
+      a: 'empty',
+      b: 'empty',
+      c: 'empty',
+      d: 'empty',
+      e: 'empty'
     }
   end
 
   # search for an empty slot in the shelf, then assign the book info as array
   def add_to_shelf(book, check_status = true)
-
     @shelf_hash.each do |key, value|
-      if value != "empty" && key == :e
+      if value != 'empty' && key == :e
         puts "Error, this shelf is full! '#{book.title}' NOT added to shelf ##{@shelf_number}."
         break
-      elsif value != "empty"
+      elsif value != 'empty'
         next
-      elsif value == "empty"
+      elsif value == 'empty'
         @shelf_hash[key] = [book.title, book.author, check_status, @shelf_number, key]
         $shelf_array << @shelf_hash[key]
         puts "'#{book.title}' was added to shelf ##{@shelf_number} in slot #{key}."
@@ -105,22 +104,74 @@ end
 
 downtown_library = Library.new
 
-book1 = Book.new("The Bible", "Jesus")
-book2 = Book.new("Moby Dick", "Herman Melville")
-book3 = Book.new("War and Peace", "Leo Tolstoy")
-book4 = Book.new("Learn to Program", "Chris Pine")
-book5 = Book.new("Of Mice and Men", "John Steinbeck")
-book6 = Book.new("1984", "George Orwell")
+book1 = Book.new('The Bible', 'Jesus')
+book2 = Book.new('Moby Dick', 'Herman Melville')
+book3 = Book.new('War and Peace', 'Leo Tolstoy')
+book4 = Book.new('Learn to Program', 'Chris Pine')
+book5 = Book.new('Of Mice and Men', 'John Steinbeck')
+book6 = Book.new('1984', 'George Orwell')
 
 shelf1 = Shelf.new
 shelf2 = Shelf.new
 
-shelf1.add_to_shelf(book1)
-shelf1.add_to_shelf(book2)
-shelf1.add_to_shelf(book3)
-shelf1.add_to_shelf(book4)
-shelf1.add_to_shelf(book5)
-shelf1.add_to_shelf(book6)
+###############################################################################
+# Test section below ### Un-comment a section to test different functionality
 
+# # Add books to a shelf and display a list of the books and their information
+# shelf1.add_to_shelf(book1)
+# shelf1.add_to_shelf(book2)
+# shelf1.add_to_shelf(book3)
+# shelf2.add_to_shelf(book4)
+# shelf2.add_to_shelf(book5)
+# shelf2.add_to_shelf(book6)
 # downtown_library.list_books
+
+# # Add too many books to one shelf and return the error message
+# shelf1.add_to_shelf(book1)
+# shelf1.add_to_shelf(book2)
+# shelf1.add_to_shelf(book3)
+# shelf1.add_to_shelf(book4)
+# shelf1.add_to_shelf(book5)
+# shelf1.add_to_shelf(book6)
+
+# # Add books to a shelf and check 2 out, display a list of the books
+# shelf1.add_to_shelf(book1)
+# shelf1.add_to_shelf(book2)
+# shelf1.add_to_shelf(book3)
+# shelf2.add_to_shelf(book4)
+# shelf2.add_to_shelf(book5)
+# shelf2.add_to_shelf(book6)
+# downtown_library.check_out(book3)
+# downtown_library.check_out(book5)
+# downtown_library.list_books
+
+# # Add books to a shelf and try checking out a book already out
+# shelf1.add_to_shelf(book1)
+# shelf1.add_to_shelf(book2)
+# shelf1.add_to_shelf(book3)
+# shelf2.add_to_shelf(book4)
+# shelf2.add_to_shelf(book5)
+# shelf2.add_to_shelf(book6)
+# downtown_library.check_out(book3)
+# downtown_library.check_out(book3)
+
+# # Add book to a shelf, check it out, display list, then check in, list
+# shelf1.add_to_shelf(book1)
+# downtown_library.check_out(book1)
+# downtown_library.list_books
+# downtown_library.check_in(book1)
+# downtown_library.list_books
+
+# # Add book to a shelf, check it out, check it in and try check in again
+# shelf1.add_to_shelf(book1)
+# downtown_library.check_out(book1)
+# downtown_library.list_books
+# downtown_library.check_in(book1)
+# downtown_library.list_books
+# downtown_library.check_in(book1)
+
+
+
+
+
 
