@@ -6,7 +6,7 @@ class Library
   end
 
   def num_shelves
-    $shelf_iterator
+    puts $shelf_iterator
   end
 
   def list_books
@@ -231,14 +231,14 @@ downtown_library.list_commands
 # downtown_library.list_shelf(1)
 # downtown_library.list_shelf(2)
 
-# Attempt to list a shelf that doesn't exist
-shelf1.add_to_shelf(book1)
-shelf1.add_to_shelf(book2)
-shelf1.add_to_shelf(book3)
-shelf2.add_to_shelf(book4)
-shelf2.add_to_shelf(book5)
-shelf2.add_to_shelf(book6)
-downtown_library.list_shelf(3)
+# # Attempt to list a shelf that doesn't exist
+# shelf1.add_to_shelf(book1)
+# shelf1.add_to_shelf(book2)
+# shelf1.add_to_shelf(book3)
+# shelf2.add_to_shelf(book4)
+# shelf2.add_to_shelf(book5)
+# shelf2.add_to_shelf(book6)
+# downtown_library.list_shelf(3)
 
 # # Add boks, then list them in alphabetical order
 # shelf1.add_to_shelf(book1)
