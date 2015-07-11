@@ -1,16 +1,32 @@
 # library class
 class Library
   def initialize
-    $shelf_iterator = 0 # to keep track of number of shelves
-    $shelf_array = [] # to store shelf info for access by the library
+    @@shelf_iterator = 0 # to keep track of number of shelves
+    @@shelf_array = [] # to store shelf info for access by the library
+  end
+
+  def Library::shelf_iterator
+    @@shelf_iterator
+  end
+
+  def Library::shelf_iterator=(value)
+    @@shelf_iterator = value
+  end
+
+  def Library::shelf_array
+    @@shelf_array
+  end
+
+  def Library::shelf_array=(value)
+    @@shelf_array = value
   end
 
   def num_shelves
-    puts $shelf_iterator
+    puts @@shelf_iterator
   end
 
   def list_books
-    $shelf_array.each do |x|
+    @@shelf_array.each do |x|
       puts '---'
       puts "'#{x[0]}' written by #{x[1]} is stored on shelf ##{x[3]} in slot #{x[4]}. It's Book ID is #{x[5]}."
       if x[2]
@@ -22,7 +38,7 @@ class Library
   end
 
   def list_books_alpha
-    $shelf_array.sort.each do |x|
+    @@shelf_array.sort.each do |x|
       puts '---'
       puts "'#{x[0]}' written by #{x[1]} is stored on shelf ##{x[3]} in slot #{x[4]}. It's Book ID is #{x[5]}."
       if x[2]
@@ -36,7 +52,7 @@ class Library
   def check_out(book)
     title_counter = 0 # allows return of error if book does not exist
 
-    $shelf_array.each do |i|
+    @@shelf_array.each do |i|
       if book.title == i[0] && i[2] == true
         i[2] = false
         puts "You checked out '#{book.title}'."
@@ -49,11 +65,11 @@ class Library
       end
     end
     book_error = "'#{book.title}' has not been added to the library."
-    puts book_error if title_counter == $shelf_array.length
+    puts book_error if title_counter == @@shelf_array.length
   end
 
   def check_in(book)
-    $shelf_array.each do |i|
+    @@shelf_array.each do |i|
       if book.title == i[0] && i[2] == false
         i[2] = true
         puts "You checked in '#{book.title}'"
@@ -70,7 +86,7 @@ class Library
   def list_shelf(shelf_num) # Trying to come up with a way to give error
     puts "The following books are located on shelf ##{shelf_num}:"
 
-    $shelf_array.each do |s|
+    @@shelf_array.each do |s|
       if shelf_num == s[3]
         print "'#{s[0]}' is in slot #{s[4]}. "
         puts "It's Book ID is #{s[5]}"
@@ -113,9 +129,9 @@ end
 class Shelf
   attr_accessor :shelf_hash
 
-  def initialize
-    $shelf_iterator += 1
-    @shelf_number = $shelf_iterator
+  def initialize()
+    Library::shelf_iterator += 1
+    @shelf_number = Library::shelf_iterator
 
     # letters equal slots in the shelf, each shelf has space for 5 books
     @shelf_hash = {
@@ -137,7 +153,7 @@ class Shelf
         next
       elsif value == 'empty'
         @shelf_hash[key] = [book.title, book.author, check_status, @shelf_number, key, book.bookId]
-        $shelf_array << @shelf_hash[key]
+        Library::shelf_array << @shelf_hash[key]
         puts "'#{book.title}' was added to shelf ##{@shelf_number} in slot #{key}."
         break
       end
@@ -158,18 +174,19 @@ shelf1 = Shelf.new
 shelf2 = Shelf.new
 
 downtown_library.list_commands
+downtown_library.num_shelves
 
 ###############################################################################
 # Test section below ### Un-comment a section to test different functionality
 
-# # Add books to a shelf and display a list of the books and their information
-# shelf1.add_to_shelf(book1)
-# shelf1.add_to_shelf(book2)
-# shelf1.add_to_shelf(book3)
-# shelf2.add_to_shelf(book4)
-# shelf2.add_to_shelf(book5)
-# shelf2.add_to_shelf(book6)
-# downtown_library.list_books
+# Add books to a shelf and display a list of the books and their information
+shelf1.add_to_shelf(book1)
+shelf1.add_to_shelf(book2)
+shelf1.add_to_shelf(book3)
+shelf2.add_to_shelf(book4)
+shelf2.add_to_shelf(book5)
+shelf2.add_to_shelf(book6)
+downtown_library.list_books
 
 # # Add too many books to one shelf and return the error message
 # shelf1.add_to_shelf(book1)
