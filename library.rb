@@ -1,16 +1,7 @@
 # library class
 class Library
   def initialize
-    @@shelf_iterator = 0 # to keep track of number of shelves
     @@shelf_array = [] # to store shelf info for access by the library
-  end
-
-  def Library::shelf_iterator
-    @@shelf_iterator
-  end
-
-  def Library::shelf_iterator=(value)
-    @@shelf_iterator = value
   end
 
   def Library::shelf_array
@@ -22,7 +13,7 @@ class Library
   end
 
   def num_shelves
-    puts @@shelf_iterator
+    puts Shelf::shelf_iterator
   end
 
   def list_books
@@ -84,7 +75,7 @@ class Library
   end
 
   def list_shelf(shelf_num) # Trying to come up with a way to give error
-    puts "The following books are located on shelf ##{shelf_num}:"
+    puts "The following books are located on shelf ##{shelf_num}:\n---"
 
     @@shelf_array.each do |s|
       if shelf_num == s[3]
@@ -128,10 +119,11 @@ end
 # shelf class
 class Shelf
   attr_accessor :shelf_hash
+  @@shelf_iterator = 0 # to keep track of number of shelves
 
   def initialize()
-    Library::shelf_iterator += 1
-    @shelf_number = Library::shelf_iterator
+    @@shelf_iterator += 1
+    @shelf_number = @@shelf_iterator
 
     # letters equal slots in the shelf, each shelf has space for 5 books
     @shelf_hash = {
@@ -141,6 +133,14 @@ class Shelf
       d: 'empty',
       e: 'empty'
     }
+  end
+
+  def Shelf::shelf_iterator
+    @@shelf_iterator
+  end
+
+  def Shelf::shelf_iterator=(value)
+    @@shelf_iterator = value
   end
 
   # search for an empty slot in the shelf, then assign the book info as array
@@ -174,19 +174,18 @@ shelf1 = Shelf.new
 shelf2 = Shelf.new
 
 downtown_library.list_commands
-downtown_library.num_shelves
 
 ###############################################################################
 # Test section below ### Un-comment a section to test different functionality
 
-# Add books to a shelf and display a list of the books and their information
-shelf1.add_to_shelf(book1)
-shelf1.add_to_shelf(book2)
-shelf1.add_to_shelf(book3)
-shelf2.add_to_shelf(book4)
-shelf2.add_to_shelf(book5)
-shelf2.add_to_shelf(book6)
-downtown_library.list_books
+# # Add books to a shelf and display a list of the books and their information
+# shelf1.add_to_shelf(book1)
+# shelf1.add_to_shelf(book2)
+# shelf1.add_to_shelf(book3)
+# shelf2.add_to_shelf(book4)
+# shelf2.add_to_shelf(book5)
+# shelf2.add_to_shelf(book6)
+# downtown_library.list_books
 
 # # Add too many books to one shelf and return the error message
 # shelf1.add_to_shelf(book1)
