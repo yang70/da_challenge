@@ -96,7 +96,7 @@ class Library
     print "List total number of shelves:".ljust(30)
     puts "downtown_library.num_shelves".rjust(40)
     print "List specific shelf:".ljust(30)
-    puts "downtown_library.list([shelf number])".rjust(40)
+    puts "downtown_library.list_shelf([shelf number])".rjust(40)
     print "Check out a book:".ljust(30)
     puts "downtown_library.check_out([book ID])".rjust(40)
     print "Check in a book:".ljust(30)
@@ -173,19 +173,19 @@ book6 = Book.new('1984', 'George Orwell', 'book6')
 shelf1 = Shelf.new
 shelf2 = Shelf.new
 
-downtown_library.list_commands
-
 ###############################################################################
 # Test section below ### Un-comment a section to test different functionality
+# Only one section should be un-commented at a time
 
-# # Add books to a shelf and display a list of the books and their information
-# shelf1.add_to_shelf(book1)
-# shelf1.add_to_shelf(book2)
-# shelf1.add_to_shelf(book3)
-# shelf2.add_to_shelf(book4)
-# shelf2.add_to_shelf(book5)
-# shelf2.add_to_shelf(book6)
-# downtown_library.list_books
+# Add books to a shelf, display list of books and information - default
+shelf1.add_to_shelf(book1)
+shelf1.add_to_shelf(book2)
+shelf1.add_to_shelf(book3)
+shelf2.add_to_shelf(book4)
+shelf2.add_to_shelf(book5)
+shelf2.add_to_shelf(book6)
+downtown_library.list_books
+downtown_library.list_commands
 
 # # Add too many books to one shelf and return the error message
 # shelf1.add_to_shelf(book1)
