@@ -1,4 +1,5 @@
-# library class
+# library class.  As-is, will only allow for one instance of library due to
+# use of class variables (@@shelf_array)
 class Library
   def initialize
     @@shelf_array = [] # to store shelf info for access by the library
@@ -256,7 +257,7 @@ downtown_library.list_commands
 # shelf2.add_to_shelf(book6)
 # downtown_library.list_shelf(3)
 
-# # Add boks, then list them in alphabetical order
+# # Add books, then list them in alphabetical order
 # shelf1.add_to_shelf(book1)
 # shelf1.add_to_shelf(book2)
 # shelf1.add_to_shelf(book3)
