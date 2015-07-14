@@ -1,18 +1,17 @@
 # library class.  As-is, will only allow for one instance of library due to
 # use of class variables (@@shelf_array).
 class Library
-
   # Initialize a shelf array to store info for access by library methods.
   def initialize
     @@shelf_array = []
   end
 
   # Create getter/setter for the shelf array class variable.
-  def Library::shelf_array
+  def self.shelf_array
     @@shelf_array
   end
 
-  def Library::shelf_array=(value)
+  def self.shelf_array=(value)
     @@shelf_array = value
   end
 
@@ -104,22 +103,22 @@ class Library
   # library name is downtown_library, since at the moment my code allows
   # only one instance of Library to exist without errors.
   def list_commands
-    puts "--- Library: Available user commands ---".center(70)
-    print "List available user commands:".ljust(30)
-    puts "downtown_library.list_commands".rjust(40)
-    print "List all books on all shelves:".ljust(30)
-    puts "downtown_library.list_books".rjust(40)
-    print "List all books alphabetically:".ljust(30)
-    puts "downtown_library.list_books_alpha".rjust(40)
-    print "List total number of shelves:".ljust(30)
-    puts "downtown_library.num_shelves".rjust(40)
-    print "List specific shelf:".ljust(30)
-    puts "downtown_library.list_shelf([shelf number])".rjust(40)
-    print "Check out a book:".ljust(30)
-    puts "downtown_library.check_out([book ID])".rjust(40)
-    print "Check in a book:".ljust(30)
-    puts "downtown_library.check_in([book ID])".rjust(40)
-    puts "--- End ---".center(70)
+    puts '--- Library: Available user commands ---'.center(70)
+    print 'List available user commands:'.ljust(30)
+    puts 'downtown_library.list_commands'.rjust(40)
+    print 'List all books on all shelves:'.ljust(30)
+    puts 'downtown_library.list_books'.rjust(40)
+    print 'List all books alphabetically:'.ljust(30)
+    puts 'downtown_library.list_books_alpha'.rjust(40)
+    print 'List total number of shelves:'.ljust(30)
+    puts 'downtown_library.num_shelves'.rjust(40)
+    print 'List specific shelf:'.ljust(30)
+    puts 'downtown_library.list_shelf([shelf number])'.rjust(40)
+    print 'Check out a book:'.ljust(30)
+    puts 'downtown_library.check_out([book ID])'.rjust(40)
+    print 'Check in a book:'.ljust(30)
+    puts 'downtown_library.check_in([book ID])'.rjust(40)
+    puts '--- End ---'.center(70)
   end
 end
 
@@ -147,7 +146,7 @@ class Shelf
   @@shelf_iterator = 0 # To keep track of total number of shelves created.
 
   # Iterate the number of shelves, current number gets set as instance shelf #
-  def initialize()
+  def initialize
     @@shelf_iterator += 1
     @shelf_number = @@shelf_iterator
 
@@ -162,7 +161,7 @@ class Shelf
   end
 
   # Shelf iterator getter
-  def Shelf::shelf_iterator
+  def self.shelf_iterator
     @@shelf_iterator
   end
 
