@@ -1,3 +1,4 @@
+# Final version
 # library class.  As-is, will only allow for one instance of library due to
 # use of class variables (@@shelf_array).
 class Library
