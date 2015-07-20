@@ -1,0 +1,24 @@
+<p>
+  <strong>Name:</strong>
+  <%= @robot.name %>
+</p>
+
+<p>
+  <strong>Special Attribute:</strong>
+  <%= @robot.special_attribute %>
+</p>
+
+<p>
+  <strong>Speed (mph):</strong>
+  <%= @robot.speed %>
+</p>
+
+<p>
+  <strong>Size:</strong>
+  <%= @robot.size %>
+</p>
+
+<p>
+  <%= link_to 'Edit', edit_robot_path(@robot), :class => 'options' %>
+  <%= link_to 'Back', robots_path, :class => 'options' %>
+</p>

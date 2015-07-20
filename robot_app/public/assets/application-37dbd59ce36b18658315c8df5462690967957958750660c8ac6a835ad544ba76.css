@@ -1,0 +1,115 @@
+/* line 9, /Users/yang70/Dropbox/Code Fellows Projects/da_challenge/robot_app/app/assets/stylesheets/home.scss */
+img {
+  height: 150px;
+  width: auto;
+  margin: auto;
+}
+/* line 5, /Users/yang70/Dropbox/Code Fellows Projects/da_challenge/robot_app/app/assets/stylesheets/robots.scss */
+.center {
+  text-align: center;
+}
+
+/* line 9, /Users/yang70/Dropbox/Code Fellows Projects/da_challenge/robot_app/app/assets/stylesheets/robots.scss */
+.options {
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: #262626;
+  color: white;
+  font-size: 75%;
+  padding: 1px;
+}
+
+/* line 18, /Users/yang70/Dropbox/Code Fellows Projects/da_challenge/robot_app/app/assets/stylesheets/robots.scss */
+#newBot {
+  display: block;
+  text-align: center;
+  width: 100px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: #262626;
+  color: white;
+  padding: 5px;
+  margin: 5px auto;
+  font-family: verdana;
+  text-decoration: none;
+}
+
+/* line 32, /Users/yang70/Dropbox/Code Fellows Projects/da_challenge/robot_app/app/assets/stylesheets/robots.scss */
+a {
+  text-decoration: none;
+  color: black;
+  font-family: verdana;
+}
+
+/* line 38, /Users/yang70/Dropbox/Code Fellows Projects/da_challenge/robot_app/app/assets/stylesheets/robots.scss */
+p {
+  font-family: verdana;
+  width: 400px;
+  text-align: center;
+  display: block;
+  margin: 5px auto;
+}
+
+/* line 46, /Users/yang70/Dropbox/Code Fellows Projects/da_challenge/robot_app/app/assets/stylesheets/robots.scss */
+h1 {
+  font-family: helvetica;
+  text-align: center;
+  text-shadow: 1px 1px #e02626;
+}
+
+/* line 52, /Users/yang70/Dropbox/Code Fellows Projects/da_challenge/robot_app/app/assets/stylesheets/robots.scss */
+table {
+  margin-top: 10px;
+  border: 1px solid black;
+  border-collapse: collapse;
+  font-family: verdana;
+  display: block;
+  margin: 15px auto;
+  width: 1000px;
+}
+
+/* line 62, /Users/yang70/Dropbox/Code Fellows Projects/da_challenge/robot_app/app/assets/stylesheets/robots.scss */
+th {
+  background-color: #e02626;
+  width: 198px;
+  margin: 5px 0px;
+}
+
+/* line 68, /Users/yang70/Dropbox/Code Fellows Projects/da_challenge/robot_app/app/assets/stylesheets/robots.scss */
+td {
+  border: 1px solid black;
+  padding: 3px;
+}
+
+/* line 73, /Users/yang70/Dropbox/Code Fellows Projects/da_challenge/robot_app/app/assets/stylesheets/robots.scss */
+body {
+  background-color: #cccccc;
+}
+
+/* line 77, /Users/yang70/Dropbox/Code Fellows Projects/da_challenge/robot_app/app/assets/stylesheets/robots.scss */
+img {
+  border-radius: 5px;
+  width: 100px;
+  height: auto;
+  display: block;
+  margin: 15px auto;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+/** {
+  border-style: solid;
+  border-color: black;
+}*/

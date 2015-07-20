@@ -1,0 +1,83 @@
+// Place all the styles related to the robots controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.center {
+  text-align: center;
+}
+
+.options {
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: #262626;
+  color: white;
+  font-size: 75%;
+  padding: 1px;
+}
+
+#newBot {
+  display: block;
+  text-align: center;
+  width: 100px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: #262626;
+  color: white;
+  padding: 5px;
+  margin: 5px auto;
+  font-family: verdana;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  font-family: verdana;
+}
+
+p {
+  font-family: verdana;
+  width: 400px;
+  text-align: center;
+  display: block;
+  margin: 5px auto;
+}
+
+h1 {
+  font-family: helvetica;
+  text-align: center;
+  text-shadow: 1px 1px #e02626;
+}
+
+table {
+  margin-top: 10px;
+  border: 1px solid black;
+  border-collapse: collapse;
+  font-family: verdana;
+  display: block;
+  margin: 15px auto;
+  width: 1000px;
+}
+
+th {
+  background-color: #e02626;
+  width: 198px;
+  margin: 5px 0px;
+}
+
+td {
+  border: 1px solid black;
+  padding: 3px;
+}
+
+body {
+  background-color: #cccccc;
+}
+
+img {
+  border-radius: 5px;
+  width: 100px;
+  height: auto;
+  display: block;
+  margin: 15px auto;
+}

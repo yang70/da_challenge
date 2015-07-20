@@ -1,0 +1,29 @@
+<h1>Robo-tastic!!</h1>
+<%= link_to 'New Robot', new_robot_path, :id => 'newBot' %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Speed (mph)</th>
+    <th>Size</th>
+    <th>Special Attribute</th>
+    <th colspan="1">Options</th>
+  </tr>
+
+  <% @robots.each do |robot| %>
+    <tr>
+      <td class='center'><%= robot.name %></td>
+      <td class='center'><%= robot.speed %></td>
+      <td class='center'><%= robot.size %></td>
+      <td class='center'><%= robot.special_attribute %></td>
+      <td><%= link_to 'Show', robot_path(robot), :class => 'options' %>
+          <%= link_to 'Edit', edit_robot_path(robot), :class => 'options' %>
+           <%= link_to 'Disassemble', robot_path(robot),
+              method: :delete,
+              data: { confirm: "Delete the robot named '#{robot.name}'?" },
+              :class => 'options' %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= image_tag('robot.jpg') %>
+
