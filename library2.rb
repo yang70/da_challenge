@@ -8,24 +8,32 @@ class Book
     @location = location
     @checkStatus = checkStatus
   end
+
+  def to_s
+    string  = "-----\n#{@title} written by #{@author} "
+    string += "is located on shelf ##{@location}.\n" if location != nil
+    string += "This book is checked in." if @checkStatus
+    string += "This book is checked out." if @checkStatus == false
+    string
+  end
 end
 
 ##### Shelf class #####
 class Shelf
   @@shelf_total = 0
 
-  attr_reader :shelf_array
+  attr_reader :books
 
   def initialize
     @@shelf_total += 1
     @shelf_num = @@shelf_total
-    @shelf_array = []
+    @books = []
   end
 
   def addToShelf(book)
-    if shelf_array.length < 5
+    if books.length < 5
       book.location = @shelf_num
-      shelf_array << book
+      books << book
       puts "#{book.title} was added to shelf ##{book.location}."
     else
       puts "*ERROR* Can't add #{book.title} to shelf #{@shelf_num}, it's full."
@@ -33,14 +41,7 @@ class Shelf
   end
 
   def to_s
-    @shelf_array.each do |i|
-      puts  "-----"
-      print "#{i.title} written by #{i.author} "
-      puts  "is located on shelf ##{i.location}."
-      puts  "This book is checked in." if i.checkStatus
-      puts  "This book is checked out." if i.checkStatus == false
-      puts  "-----"
-    end
+    @books.each {|i| i.to_s}
   end
 end
 
@@ -55,10 +56,8 @@ class Library
     @stacks << shelf
   end
 
-  def list # unable to name this to_s and have it work when calling x.to_s
-    @stacks.each do |x|
-      x.to_s
-    end
+  def to_s
+    @stacks.each {|x| puts x.to_s}
   end
 end
 
@@ -115,7 +114,7 @@ my_librarian = Librarian.new
 # shelf2.addToShelf(book4)
 # shelf2.addToShelf(book5)
 # shelf2.addToShelf(book6)
-# my_library.list
+# my_library.to_s
 
 # # Get error when trying to add too many books to a shelf
 # shelf1.addToShelf(book1)
