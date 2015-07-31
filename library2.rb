@@ -41,7 +41,7 @@ class Shelf
   end
 
   def to_s
-    @books.each {|i| i.to_s}
+    @books.each {|book| book.to_s}
   end
 end
 
@@ -57,7 +57,7 @@ class Library
   end
 
   def to_s
-    @stacks.each {|x| puts x.to_s}
+    @stacks.each {|shelf| puts shelf.to_s}
   end
 end
 
